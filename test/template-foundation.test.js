@@ -24,8 +24,14 @@ test('template example corpus has one article in each category and matching ja/e
     const ja = JSON.parse(await readFile(new URL(`../public/content/locales/ja/${file}`, import.meta.url), 'utf8'));
     const en = JSON.parse(await readFile(new URL(`../public/content/locales/en/${file}`, import.meta.url), 'utf8'));
     assert.equal(base.length, 1, `${file}: expected exactly one example article`);
-    assert.ok(ja[base[0].id], `${file}: missing ja locale`);
-    assert.ok(en[base[0].id], `${file}: missing en locale`);
+    const jaEntry = ja[base[0].id];
+    const enEntry = en[base[0].id];
+    assert.ok(jaEntry, `${file}: missing ja locale`);
+    assert.ok(enEntry, `${file}: missing en locale`);
+    assert.match(jaEntry.title, /^【Example】/, `${file}: ja title must clearly identify example content`);
+    assert.match(enEntry.title, /^\[Example\]/, `${file}: en title must clearly identify example content`);
+    assert.match(jaEntry.summary, /テンプレートのExample記事/, `${file}: ja summary must explain that this is example content`);
+    assert.match(enEntry.summary, /template example article/i, `${file}: en summary must explain that this is example content`);
   }
 });
 
