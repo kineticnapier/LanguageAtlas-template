@@ -1,0 +1,11 @@
+[
+  {
+    "id": "example-null-reference",
+    "type": "exception",
+    "bad": "string? name = null;\nConsole.WriteLine(name.Length);",
+    "good": "string? name = null;\nConsole.WriteLine(name?.Length ?? 0);",
+    "code": null,
+    "topics": ["null", "exceptions"],
+    "related": ["example-nullable-warning"]
+  }
+]

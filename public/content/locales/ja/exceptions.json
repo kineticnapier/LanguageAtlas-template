@@ -1,0 +1,10 @@
+{
+  "example-null-reference": {
+    "title": "NullReferenceException",
+    "short": "null の参照先へアクセスしようとした",
+    "summary": "null の可能性がある参照をそのまま使うと実行時例外になります。",
+    "why": "参照が指すオブジェクトが存在しない状態でメンバーへアクセスしているためです。",
+    "tips": "null 許容性を型と分岐で明示すると事故を減らせます。",
+    "tags": ["NullReferenceException", "null", "example"]
+  }
+}

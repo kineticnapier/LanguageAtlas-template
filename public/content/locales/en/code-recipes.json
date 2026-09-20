@@ -1,0 +1,10 @@
+{
+  "example-json-deserialize": {
+    "title": "Deserialize JSON into an object",
+    "short": "Use JsonSerializer.Deserialize",
+    "summary": "A code recipe example demonstrating a practical API operation.",
+    "why": "Recipe articles make common tasks discoverable by intent rather than API name alone.",
+    "tips": "Real articles should also cover failure modes, options, and related APIs where useful.",
+    "tags": ["JSON", "JsonSerializer", "example"]
+  }
+}

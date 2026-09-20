@@ -1,0 +1,23 @@
+export const TOPIC_DEFINITIONS = [
+  { id:'syntax', labels:{ja:'基本文法',en:'Syntax'} }, { id:'oop', labels:{ja:'型・OOP',en:'Types & OOP'} },
+  { id:'null', labels:{ja:'null',en:'null'} }, { id:'numbers', labels:{ja:'数値',en:'Numbers'} },
+  { id:'strings', labels:{ja:'文字列',en:'Strings'} }, { id:'collections', labels:{ja:'コレクション',en:'Collections'} },
+  { id:'linq', labels:{ja:'クエリ・変換',en:'Query & transforms'} }, { id:'exceptions', labels:{ja:'例外・デバッグ',en:'Exceptions & debugging'} },
+  { id:'io', labels:{ja:'ファイル・I/O',en:'Files & I/O'} }, { id:'serialization', labels:{ja:'JSON・シリアライズ',en:'JSON & serialization'} },
+  { id:'network', labels:{ja:'ネットワーク',en:'Networking'} }, { id:'async', labels:{ja:'非同期',en:'Async'} },
+  { id:'text', labels:{ja:'正規表現・文字コード',en:'Regex & text encoding'} }, { id:'practical', labels:{ja:'実践・その他',en:'Practical & other'} }
+];
+export const ARTICLE_TYPES=['code','exception','compiler-error','compiler-warning','logic','concept'];
+const SORT_MODES=new Set(['recommended','title','recent','favorites']);
+const TOPIC_IDS=new Set(TOPIC_DEFINITIONS.map(x=>x.id));
+const TYPE_IDS=new Set(ARTICLE_TYPES);
+const RULES={syntax:['syntax','構文','method','メソッド','variable','変数'],oop:['class','record','interface','object','generic','型'],null:['null','nullable'],numbers:['int','double','decimal','number','数値'],strings:['string','文字列'],collections:['list','map','dictionary','set','array','collection'],linq:['linq','stream','select','where','map','filter'],exceptions:['exception','例外','try','catch','throw','warning','error'],io:['file','path','stream','io'],serialization:['json','serialize','deserialize'],network:['http','url','network'],async:['async','await','task','thread','parallel'],text:['regex','encoding','utf'],practical:[]};
+function haystack(a){return [a?.id,a?.title,...(a?.tags??[])].filter(Boolean).join(' ').toLowerCase();}
+export function deriveArticleTopics(article){if(Array.isArray(article?.topics)){const explicit=[...new Set(article.topics.filter(x=>TOPIC_IDS.has(x)))];if(explicit.length)return explicit;}const h=haystack(article);const topics=TOPIC_DEFINITIONS.filter(t=>t.id!=='practical'&&RULES[t.id].some(term=>h.includes(term.toLowerCase()))).map(t=>t.id);if(!topics.length)topics.push('practical');return topics;}
+export function filterArticlesByTopics(articles,selectedTopics){const s=selectedTopics instanceof Set?selectedTopics:new Set(selectedTopics??[]);if(!s.size)return [...articles];return articles.filter(a=>(a.topics??deriveArticleTopics(a)).some(t=>s.has(t)));}
+export function filterArticlesByTypes(articles,selectedTypes){const s=selectedTypes instanceof Set?selectedTypes:new Set(selectedTypes??[]);if(!s.size||s.has('all'))return [...articles];return articles.filter(a=>s.has(a.type));}
+export function parseDiscoveryState(search=''){const p=new URLSearchParams(search);const types=new Set(p.getAll('type').filter(x=>TYPE_IDS.has(x)));const topics=new Set(p.getAll('topic').filter(x=>TOPIC_IDS.has(x)));const requested=p.get('sort')??'recommended';return{query:(p.get('q')??'').trim(),types,topics,sort:SORT_MODES.has(requested)?requested:'recommended'};}
+export function buildDiscoverySearch(state={},existingSearch=''){const existing=new URLSearchParams(existingSearch);const p=new URLSearchParams();const lang=existing.get('lang');if(lang)p.set('lang',lang);const q=String(state.query??'').trim();if(q)p.set('q',q);for(const type of state.types instanceof Set?state.types:new Set(state.types??[]))if(TYPE_IDS.has(type))p.append('type',type);for(const topic of state.topics instanceof Set?state.topics:new Set(state.topics??[]))if(TOPIC_IDS.has(topic))p.append('topic',topic);const sort=SORT_MODES.has(state.sort)?state.sort:'recommended';if(sort!=='recommended')p.set('sort',sort);const s=p.toString();return s?`?${s}`:'';}
+export function sortArticles(articles,mode='recommended',{recentIds=[],favoriteIds=new Set()}={}){const result=[...articles];const byTitle=(a,b)=>String(a.title??'').localeCompare(String(b.title??''),undefined,{sensitivity:'base'});if(mode==='title')return result.sort(byTitle);if(mode==='recent'){const order=new Map(recentIds.map((id,i)=>[id,i]));return result.sort((a,b)=>(order.get(a.id)??Infinity)-(order.get(b.id)??Infinity)||byTitle(a,b));}if(mode==='favorites')return result.sort((a,b)=>Number(favoriteIds.has(b.id))-Number(favoriteIds.has(a.id))||byTitle(a,b));return result;}
+export function toggleId(ids,id){const result=new Set(ids??[]);result.has(id)?result.delete(id):result.add(id);return result;}
+export function pushRecent(ids,id,limit=24){return [id,...(ids??[]).filter(x=>x!==id)].slice(0,Math.max(1,limit));}

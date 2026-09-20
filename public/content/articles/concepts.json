@@ -1,0 +1,11 @@
+[
+  {
+    "id": "example-value-reference-types",
+    "type": "concept",
+    "bad": null,
+    "good": null,
+    "code": "int x = 10;\nvar list = new List<int> { 1, 2, 3 };",
+    "topics": ["oop"],
+    "related": ["example-reference-identity"]
+  }
+]
