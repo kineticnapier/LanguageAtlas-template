@@ -1,8 +1,8 @@
 {
   "example-json-deserialize": {
-    "title": "JSONをオブジェクトへ変換する",
+    "title": "【Example】JSONをオブジェクトへ変換する",
     "short": "JsonSerializer.Deserialize を使う",
-    "summary": "実用 API の使い方を示す code recipe の example です。",
+    "summary": "これはテンプレートのExample記事です。code recipe記事の構造確認用なので、派生repoでは対象言語の実用記事に置き換えてください。",
     "why": "よく使う処理を目的から逆引きできるようにする記事形式です。",
     "tips": "実サイトでは失敗例・設定差・関連 API も補足してください。",
     "tags": ["JSON", "JsonSerializer", "example"]

@@ -1,8 +1,8 @@
 {
   "example-reference-identity": {
-    "title": "Confusing reference identity with value equality",
+    "title": "[Example] Confusing reference identity with value equality",
     "short": "Equal content and the same object are different concepts",
-    "summary": "A logic-pitfall example where the program compiles but the result differs from the programmer's intent.",
+    "summary": "This is a template example article. It demonstrates the logic-pitfall structure and should be replaced in derived repositories.",
     "why": "Conditions can be wrong when identity and value equality are treated as the same thing.",
     "tips": "Replace this with an equality pitfall appropriate for the target language.",
     "tags": ["equality", "reference", "example"]

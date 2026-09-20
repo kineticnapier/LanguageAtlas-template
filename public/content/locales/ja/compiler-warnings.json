@@ -1,8 +1,8 @@
 {
   "example-nullable-warning": {
-    "title": "CS8602: null 参照の逆参照です",
+    "title": "【Example】CS8602: null 参照の逆参照です",
     "short": "nullable 参照を未確認のまま使用している",
-    "summary": "nullable 解析が null の可能性を検出した例です。",
+    "summary": "これはテンプレートのExample記事です。コンパイル警告記事の表示確認用なので、派生repoでは対象言語の診断に置き換えてください。",
     "why": "実行時例外になる可能性がある経路をコンパイラが追跡しています。",
     "tips": "警告を無視するより、null チェックや型設計で状態を表現します。",
     "tags": ["CS8602", "nullable", "example"]

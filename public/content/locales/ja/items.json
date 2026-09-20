@@ -1,8 +1,8 @@
 {
   "example-console-write-line": {
-    "title": "標準出力に1行表示する",
+    "title": "【Example】標準出力に1行表示する",
     "short": "Console.WriteLine で文字列を出力する",
-    "summary": "最小の出力例です。テンプレートの記事構造を確認するための example です。",
+    "summary": "これはテンプレートのExample記事です。派生repoでは対象言語の記事に置き換えてください。",
     "why": "コードレシピ型の記事では、すぐ使える代表コードを code に置きます。",
     "tips": "派生 repo では対象言語の最小出力例に置き換えてください。",
     "tags": ["Console", "WriteLine", "example"]

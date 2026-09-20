@@ -1,8 +1,8 @@
 {
   "example-json-deserialize": {
-    "title": "Deserialize JSON into an object",
+    "title": "[Example] Deserialize JSON into an object",
     "short": "Use JsonSerializer.Deserialize",
-    "summary": "A code recipe example demonstrating a practical API operation.",
+    "summary": "This is a template example article. It demonstrates the code-recipe structure and should be replaced in derived repositories.",
     "why": "Recipe articles make common tasks discoverable by intent rather than API name alone.",
     "tips": "Real articles should also cover failure modes, options, and related APIs where useful.",
     "tags": ["JSON", "JsonSerializer", "example"]

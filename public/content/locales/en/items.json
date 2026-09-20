@@ -1,8 +1,8 @@
 {
   "example-console-write-line": {
-    "title": "Print one line to standard output",
+    "title": "[Example] Print one line to standard output",
     "short": "Write text with Console.WriteLine",
-    "summary": "A minimal output example used to demonstrate the template article structure.",
+    "summary": "This is a template example article. Replace it with an article for the target language in derived repositories.",
     "why": "Recipe articles keep a representative ready-to-use snippet in the code field.",
     "tips": "Replace this with the target language's minimal output example in derived repositories.",
     "tags": ["Console", "WriteLine", "example"]

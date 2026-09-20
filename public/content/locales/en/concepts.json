@@ -1,8 +1,8 @@
 {
   "example-value-reference-types": {
-    "title": "Value types and reference types",
+    "title": "[Example] Value types and reference types",
     "short": "Understand values versus object references",
-    "summary": "A concept article example for explaining a language's type model.",
+    "summary": "This is a template example article. It demonstrates the concept-article structure and should be replaced in derived repositories.",
     "why": "It provides a foundation for understanding assignment, equality, and mutation.",
     "tips": "Replace it with the target language's important type-model concept in derived repositories.",
     "tags": ["type", "reference", "example"]
