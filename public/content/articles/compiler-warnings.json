@@ -1,0 +1,11 @@
+[
+  {
+    "id": "example-nullable-warning",
+    "type": "compiler-warning",
+    "bad": "string? text = GetText();\nConsole.WriteLine(text.Length);",
+    "good": "string? text = GetText();\nif (text is not null) Console.WriteLine(text.Length);",
+    "code": null,
+    "topics": ["null"],
+    "related": ["example-null-reference"]
+  }
+]

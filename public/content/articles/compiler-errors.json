@@ -1,0 +1,11 @@
+[
+  {
+    "id": "example-cs0103",
+    "type": "compiler-error",
+    "bad": "Console.WriteLine(message);",
+    "good": "var message = \"Hello\";\nConsole.WriteLine(message);",
+    "code": null,
+    "topics": ["syntax", "exceptions"],
+    "related": ["example-console-write-line"]
+  }
+]

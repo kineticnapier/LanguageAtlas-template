@@ -1,0 +1,10 @@
+{
+  "example-cs0103": {
+    "title": "[Example] CS0103: The name does not exist in the current context",
+    "short": "A name cannot be resolved by the compiler",
+    "summary": "This is a template example article. It only demonstrates the compiler-error layout and should be replaced in derived repositories.",
+    "why": "Common causes include use before declaration, spelling mistakes, or an invalid scope.",
+    "tips": "Check both the failing line and where the symbol is declared.",
+    "tags": ["CS0103", "scope", "example"]
+  }
+}

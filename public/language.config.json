@@ -1,0 +1,34 @@
+{
+  "id": "template",
+  "name": "Example Language",
+  "storagePrefix": "language-atlas-template",
+  "site": {
+    "title": "Language Atlas",
+    "description": "A searchable programming-language reference for recipes, diagnostics, pitfalls, and concepts."
+  },
+  "logo": {
+    "prefix": "Language ",
+    "accent": "Atlas",
+    "suffix": ""
+  },
+  "hero": {
+    "eyebrow": {
+      "ja": "逆引きプログラミング言語リファレンス",
+      "en": "Reverse lookup programming-language reference"
+    },
+    "description": {
+      "ja": "コード例、例外、コンパイル診断、仕組みをひとつの検索で。",
+      "en": "Search recipes, exceptions, compiler diagnostics, and concepts in one place."
+    }
+  },
+  "syntax": {
+    "prismLanguage": "csharp"
+  },
+  "search": {
+    "placeholder": {
+      "ja": "例: JSON / null / compiler error",
+      "en": "e.g. JSON / null / compiler error"
+    },
+    "quickQueries": ["JSON", "null", "example"]
+  }
+}

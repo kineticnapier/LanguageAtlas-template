@@ -1,0 +1,10 @@
+{
+  "example-value-reference-types": {
+    "title": "【Example】値型と参照型",
+    "short": "値そのものとオブジェクト参照の違いをつかむ",
+    "summary": "これはテンプレートのExample記事です。concept記事の構造確認用なので、派生repoでは対象言語の概念記事に置き換えてください。",
+    "why": "代入・比較・変更の伝播を理解する土台になります。",
+    "tips": "派生言語では、その言語で重要な型モデルの記事へ置き換えてください。",
+    "tags": ["type", "reference", "example"]
+  }
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "example-reference-identity",
+    "type": "logic",
+    "bad": "var a = new object();\nvar b = new object();\nConsole.WriteLine(ReferenceEquals(a, b)); // false",
+    "good": "var same = a;\nConsole.WriteLine(ReferenceEquals(a, same)); // true",
+    "code": null,
+    "topics": ["oop"],
+    "related": ["example-value-reference-types"]
+  }
+]

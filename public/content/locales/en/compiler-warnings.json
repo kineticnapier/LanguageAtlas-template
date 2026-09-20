@@ -1,0 +1,10 @@
+{
+  "example-nullable-warning": {
+    "title": "[Example] CS8602: Dereference of a possibly null reference",
+    "short": "A nullable reference is used without proving it is non-null",
+    "summary": "This is a template example article. It only demonstrates the compiler-warning layout and should be replaced in derived repositories.",
+    "why": "The compiler tracks a path where the value can still be null.",
+    "tips": "Prefer a guard or better type design over suppressing the warning blindly.",
+    "tags": ["CS8602", "nullable", "example"]
+  }
+}

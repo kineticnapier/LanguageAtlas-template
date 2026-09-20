@@ -1,0 +1,10 @@
+{
+  "example-null-reference": {
+    "title": "【Example】NullReferenceException",
+    "short": "null の参照先へアクセスしようとした",
+    "summary": "これはテンプレートのExample記事です。例外記事の表示確認用なので、派生repoでは対象言語の例外に置き換えてください。",
+    "why": "参照が指すオブジェクトが存在しない状態でメンバーへアクセスしているためです。",
+    "tips": "null 許容性を型と分岐で明示すると事故を減らせます。",
+    "tags": ["NullReferenceException", "null", "example"]
+  }
+}

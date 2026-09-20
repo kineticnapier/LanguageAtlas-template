@@ -1,0 +1,10 @@
+{
+  "example-null-reference": {
+    "title": "[Example] NullReferenceException",
+    "short": "A member was accessed through a null reference",
+    "summary": "This is a template example article. It only demonstrates the exception-article layout and should be replaced in derived repositories.",
+    "why": "There is no object behind the reference when the member access occurs.",
+    "tips": "Make nullable state explicit and guard it before dereferencing.",
+    "tags": ["NullReferenceException", "null", "example"]
+  }
+}

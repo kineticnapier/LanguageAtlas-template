@@ -1,0 +1,351 @@
+.view-switch {
+  display: inline-flex;
+  gap: 6px;
+  padding: 4px;
+  margin-bottom: 14px;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  background: #0d1117;
+}
+
+.view-switch button {
+  border: 0;
+  border-radius: 7px;
+  padding: 7px 12px;
+  background: transparent;
+  color: #8b949e;
+  cursor: pointer;
+}
+
+.view-switch button.active {
+  background: #21262d;
+  color: #f0f6fc;
+}
+
+body.quest-mode main {
+  width: 100%;
+  max-width: none;
+  padding: 0 16px 24px;
+}
+
+body.quest-mode .hero {
+  display: none;
+}
+
+body.quest-mode .layout {
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 16px;
+  padding-top: 18px;
+}
+
+body.quest-mode .quest-layout {
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 14px;
+}
+
+body.quest-mode .quest-viewport {
+  height: calc(100dvh - 190px);
+  min-height: 560px;
+}
+
+body.quest-mode .quest-detail {
+  max-height: calc(100dvh - 190px);
+  overflow: auto;
+}
+
+.quest-view-panel {
+  min-width: 0;
+}
+
+.quest-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.quest-toolbar-copy {
+  min-width: 0;
+}
+
+.quest-toolbar h2 {
+  margin: 0 0 4px;
+  font-size: 1.08rem;
+}
+
+.quest-toolbar p {
+  margin: 0;
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+.quest-toolbar-side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.quest-toolbar-side button {
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background: #21262d;
+  color: #c9d1d9;
+  padding: 7px 11px;
+  cursor: pointer;
+}
+
+.quest-stats {
+  color: #8b949e;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.quest-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 12px;
+}
+
+.quest-viewport {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  background-color: #0d1117;
+  background-image:
+    linear-gradient(rgba(48, 54, 61, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48, 54, 61, 0.22) 1px, transparent 1px),
+    linear-gradient(rgba(48, 54, 61, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(48, 54, 61, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
+}
+
+.quest-viewport.dragging {
+  cursor: grabbing;
+}
+
+.quest-world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+
+.quest-edges,
+.quest-nodes {
+  position: absolute;
+  inset: 0;
+}
+
+.quest-edges {
+  overflow: visible;
+  pointer-events: none;
+}
+
+.quest-edge {
+  fill: none;
+  stroke: rgba(139, 148, 158, 0.52);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.quest-edge.support {
+  stroke: rgba(240, 136, 62, 0.52);
+  stroke-width: 3;
+  stroke-dasharray: 10 9;
+}
+
+.quest-node {
+  position: absolute;
+  width: max-content;
+  min-width: 220px;
+  max-width: 360px;
+  min-height: 86px;
+  height: auto;
+  padding: 12px 14px 12px 18px;
+  border: 1px solid #30363d;
+  border-left: 5px solid var(--quest-color, #8b949e);
+  border-radius: 11px;
+  background: linear-gradient(180deg, #1b222c, #161b22);
+  color: #f0f6fc;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.quest-node:hover,
+.quest-node.selected {
+  border-color: #8b949e;
+  border-left-color: var(--quest-color, #8b949e);
+  box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.15), 0 10px 28px rgba(0, 0, 0, 0.32);
+  transform: translateY(-2px);
+}
+
+.quest-node strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 1.08rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.quest-node-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.quest-node-type {
+  display: block;
+  min-width: 0;
+  color: var(--quest-color, #8b949e);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.quest-node-code {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 10px;
+  padding: 6px 8px;
+  border: 1px solid #30363d;
+  border-radius: 7px;
+  background: #0d1117;
+  color: #d2a8ff;
+  font: 0.86rem/1.45 ui-monospace, SFMono-Regular, Consolas, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.quest-node.support {
+  width: max-content;
+  min-width: 200px;
+  max-width: 340px;
+  height: auto;
+  min-height: 68px;
+  padding: 10px 12px 11px 15px;
+  border-style: dashed;
+  background: rgba(22, 27, 34, 0.9);
+  opacity: 0.88;
+}
+
+.quest-node.support strong {
+  margin-top: 5px;
+  font-size: 0.94rem;
+}
+
+.quest-node.support .quest-node-code {
+  margin-top: 8px;
+  font-size: 0.78rem;
+}
+
+.quest-node-support {
+  position: static;
+  flex: 0 0 auto;
+  color: #f0883e;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.quest-help {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: rgba(13, 17, 23, 0.82);
+  color: #8b949e;
+  font-size: 0.72rem;
+  pointer-events: none;
+}
+
+.quest-detail {
+  align-self: start;
+  min-height: 160px;
+  padding: 16px;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  background: #161b22;
+  position: sticky;
+  top: 82px;
+}
+
+.quest-detail h3 {
+  margin: 10px 0 8px;
+  font-size: 1rem;
+}
+
+.quest-detail p,
+.quest-detail-empty {
+  margin: 0;
+  color: #8b949e;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.quest-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #8b949e;
+  font-size: 0.72rem;
+}
+
+.quest-detail-kind {
+  border: 1px solid #30363d;
+  border-radius: 999px;
+  padding: 2px 7px;
+}
+
+.quest-detail-kind.main {
+  color: #3fb950;
+}
+
+.quest-detail-kind.support {
+  color: #f0883e;
+}
+
+.quest-open-article {
+  margin-top: 14px;
+  width: 100%;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background: #21262d;
+  color: #f0f6fc;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  body.quest-mode .layout,
+  body.quest-mode .quest-layout,
+  .quest-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .quest-detail {
+    position: static;
+  }
+
+  body.quest-mode .quest-detail {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .quest-viewport {
+    min-height: 540px;
+  }
+}

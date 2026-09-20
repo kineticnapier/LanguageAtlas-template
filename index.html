@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Language Atlas</title>
+  <meta id="siteDescription" name="description" content="A searchable programming-language reference.">
+  <link rel="stylesheet" href="/src/styles.css">
+  <link rel="stylesheet" href="/src/code-enhancements.css">
+  <link rel="stylesheet" href="/src/list-discovery.css">
+  <link rel="stylesheet" href="/src/quest-view.css">
+</head>
+<body>
+<header>
+  <div class="nav">
+    <button class="logo" id="homeButton"><span id="logoPrefix">Language </span><span id="logoAccent">Atlas</span><span id="logoSuffix"></span></button>
+    <nav id="topTypeNav"></nav>
+    <label class="language-picker" for="languageSelect">
+      <span id="languageLabel" class="sr-only">言語</span>
+      <select id="languageSelect" aria-labelledby="languageLabel">
+        <option value="ja">日本語</option>
+        <option value="en">English</option>
+      </select>
+    </label>
+  </div>
+</header>
+
+<main>
+  <section id="homeView">
+    <div class="hero">
+      <div id="heroEyebrow" class="eyebrow">逆引きプログラミング言語リファレンス</div>
+      <h1><span id="heroTitle1">やりたいことも、</span><br><span id="heroTitle2">壊れた理由も。</span></h1>
+      <p id="heroDescription">コード例、例外、コンパイル診断、仕組みをひとつの検索で。</p>
+      <form id="searchForm" class="search">
+        <input id="searchInput" placeholder="例: JSON / null / compiler error" autocomplete="off">
+        <button id="searchButton" type="submit">検索</button>
+      </form>
+      <div id="quickQueries" class="quick"></div>
+    </div>
+
+    <div class="layout">
+      <aside>
+        <div id="asideTitle" class="aside-title">種類</div>
+        <div id="typeFilters"></div>
+      </aside>
+
+      <section>
+        <div class="view-switch" role="group" aria-label="View mode">
+          <button id="listViewButton" type="button" class="active" aria-pressed="true">一覧で見る</button>
+          <button id="questViewButton" type="button" aria-pressed="false">学習マップで見る</button>
+        </div>
+
+        <div id="listViewPanel">
+          <div class="list-head">
+            <h2 id="listTitle">おすすめ</h2>
+            <span id="resultCount"></span>
+          </div>
+          <div class="list-tools">
+            <div class="topic-filter-group">
+              <span id="topicFilterLabel" class="list-tool-label">トピック</span>
+              <div id="topicFilters" class="topic-filters"></div>
+            </div>
+            <div class="list-tool-actions">
+              <label class="sort-picker" for="sortSelect">
+                <span id="sortLabel">並び順</span>
+                <select id="sortSelect">
+                  <option value="recommended">おすすめ順</option>
+                  <option value="title">名前順</option>
+                  <option value="recent">最近見た順</option>
+                  <option value="favorites">お気に入り優先</option>
+                </select>
+              </label>
+              <button id="favoritesOnlyButton" type="button" aria-pressed="false">☆ お気に入り</button>
+              <button id="recentOnlyButton" type="button" aria-pressed="false">最近見た</button>
+            </div>
+          </div>
+          <div id="selectedFilters" class="selected-filters" hidden>
+            <span id="selectedFiltersLabel" class="list-tool-label">選択中</span>
+            <div id="selectedFilterChips" class="selected-filter-chips"></div>
+            <button id="clearFiltersButton" type="button">すべて解除</button>
+          </div>
+          <div id="cards" class="cards"></div>
+          <div id="empty" class="empty">一致する項目がありません。</div>
+        </div>
+
+        <div id="questViewPanel" class="quest-view-panel hidden">
+          <div class="quest-toolbar">
+            <div class="quest-toolbar-copy">
+              <h2 id="questChapterTitle"></h2>
+              <p id="questChapterDescription"></p>
+            </div>
+            <div class="quest-toolbar-side">
+              <button id="questFitButton" type="button">全体を表示</button>
+              <span id="questStats" class="quest-stats"></span>
+            </div>
+          </div>
+          <div class="quest-layout">
+            <div id="questViewport" class="quest-viewport">
+              <div id="questWorld" class="quest-world">
+                <svg id="questEdges" class="quest-edges" aria-hidden="true"></svg>
+                <div id="questNodes" class="quest-nodes"></div>
+              </div>
+              <div id="questHelp" class="quest-help">ドラッグ: 移動 / ホイール: ズーム / クリック: 概要 / ダブルクリック: 記事を開く</div>
+            </div>
+            <aside id="questDetail" class="quest-detail"></aside>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section id="detailView" class="detail hidden">
+    <button id="backButton" class="back">← 一覧に戻る</button>
+    <div id="detailContent"></div>
+  </section>
+</main>
+
+<script type="module" src="/src/main.js"></script>
+<script type="module" src="/src/quest-bootstrap.js"></script>
+</body>
+</html>

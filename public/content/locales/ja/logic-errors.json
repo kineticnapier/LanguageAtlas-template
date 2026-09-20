@@ -1,0 +1,10 @@
+{
+  "example-reference-identity": {
+    "title": "【Example】参照の同一性を値の等価性と混同する",
+    "short": "同じ内容と同じオブジェクトは別の概念",
+    "summary": "これはテンプレートのExample記事です。logic記事の構造確認用なので、派生repoでは対象言語の落とし穴に置き換えてください。",
+    "why": "値の等価性とオブジェクトの同一性を区別しないと条件判定を誤ります。",
+    "tips": "その言語の等価比較規則に合わせた example へ差し替えてください。",
+    "tags": ["equality", "reference", "example"]
+  }
+}

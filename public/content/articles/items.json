@@ -1,0 +1,11 @@
+[
+  {
+    "id": "example-console-write-line",
+    "type": "code",
+    "bad": null,
+    "good": null,
+    "code": "Console.WriteLine(\"Hello, Atlas!\");",
+    "topics": ["syntax"],
+    "related": ["example-json-deserialize"]
+  }
+]

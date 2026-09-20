@@ -1,0 +1,11 @@
+[
+  {
+    "id": "example-json-deserialize",
+    "type": "code",
+    "bad": null,
+    "good": null,
+    "code": "var user = JsonSerializer.Deserialize<User>(json);",
+    "topics": ["serialization"],
+    "related": ["example-console-write-line"]
+  }
+]
