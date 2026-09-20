@@ -2,9 +2,6 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
-      - content/expand-to-500
   pull_request:
 
 jobs:

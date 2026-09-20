@@ -3,20 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>C# Atlas</title>
-  <meta name="description" content="C# Atlas is a searchable C# reference for errors, exceptions, code examples, and concepts.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="C# Atlas">
-  <meta property="og:description" content="Search C# errors, exceptions, code examples, and concepts.">
-  <meta property="og:url" content="https://csharpatlas.pages.dev/">
-  <meta property="og:image" content="https://csharpatlas.pages.dev/csharp-atlas-og.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="C# Atlas — Search C# errors, exceptions, code examples, and concepts.">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="C# Atlas">
-  <meta name="twitter:description" content="Search C# errors, exceptions, code examples, and concepts.">
-  <meta name="twitter:image" content="https://csharpatlas.pages.dev/csharp-atlas-og.png">
+  <title>Language Atlas</title>
+  <meta id="siteDescription" name="description" content="A searchable programming-language reference.">
   <link rel="stylesheet" href="/src/styles.css">
   <link rel="stylesheet" href="/src/code-enhancements.css">
   <link rel="stylesheet" href="/src/list-discovery.css">
@@ -25,14 +13,8 @@
 <body>
 <header>
   <div class="nav">
-    <button class="logo" id="homeButton">C<span>#</span> Atlas</button>
-    <nav>
-      <button data-nav-type="all">すべて</button>
-      <button data-nav-type="code">コード集</button>
-      <button data-nav-type="exception">例外</button>
-      <button data-nav-type="compiler-error">コンパイルエラー</button>
-      <button data-nav-type="compiler-warning">コンパイル警告</button>
-    </nav>
+    <button class="logo" id="homeButton"><span id="logoPrefix">Language </span><span id="logoAccent">Atlas</span><span id="logoSuffix"></span></button>
+    <nav id="topTypeNav"></nav>
     <label class="language-picker" for="languageSelect">
       <span id="languageLabel" class="sr-only">言語</span>
       <select id="languageSelect" aria-labelledby="languageLabel">
@@ -46,31 +28,20 @@
 <main>
   <section id="homeView">
     <div class="hero">
-      <div id="heroEyebrow" class="eyebrow">逆引き C# リファレンス</div>
+      <div id="heroEyebrow" class="eyebrow">逆引きプログラミング言語リファレンス</div>
       <h1><span id="heroTitle1">やりたいことも、</span><br><span id="heroTitle2">壊れた理由も。</span></h1>
-      <p id="heroDescription">C# のコード例、例外、コンパイルエラー・警告、仕組みをひとつの検索で。</p>
+      <p id="heroDescription">コード例、例外、コンパイル診断、仕組みをひとつの検索で。</p>
       <form id="searchForm" class="search">
-        <input id="searchInput" placeholder="例: JSON 読み込み / NullReferenceException / CS0103" autocomplete="off">
+        <input id="searchInput" placeholder="例: JSON / null / compiler error" autocomplete="off">
         <button id="searchButton" type="submit">検索</button>
       </form>
-      <div class="quick">
-        <button data-query="JSON">JSON</button>
-        <button data-query="Dictionary">Dictionary</button>
-        <button data-query="null">null</button>
-        <button data-query="CS0103">CS0103</button>
-      </div>
+      <div id="quickQueries" class="quick"></div>
     </div>
 
     <div class="layout">
       <aside>
         <div id="asideTitle" class="aside-title">種類</div>
-        <button class="type active" data-type="all">すべて</button>
-        <button class="type" data-type="code">コード集</button>
-        <button class="type" data-type="exception">例外</button>
-        <button class="type" data-type="compiler-error">コンパイルエラー</button>
-        <button class="type" data-type="compiler-warning">コンパイル警告</button>
-        <button class="type" data-type="logic">論理エラー</button>
-        <button class="type" data-type="concept">仕組み</button>
+        <div id="typeFilters"></div>
       </aside>
 
       <section>

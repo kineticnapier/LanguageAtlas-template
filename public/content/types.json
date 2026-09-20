@@ -1,0 +1,8 @@
+[
+  {"id":"code","labels":{"ja":"コード集","en":"Code recipes"},"showInNav":true},
+  {"id":"exception","labels":{"ja":"例外","en":"Exceptions"},"showInNav":true},
+  {"id":"compiler-error","labels":{"ja":"コンパイルエラー","en":"Compiler errors"},"showInNav":true},
+  {"id":"compiler-warning","labels":{"ja":"コンパイル警告","en":"Compiler warnings"},"showInNav":true},
+  {"id":"logic","labels":{"ja":"論理エラー","en":"Logic pitfalls"}},
+  {"id":"concept","labels":{"ja":"仕組み","en":"Concepts"}}
+]

@@ -1,15 +1,5 @@
 import { uiText } from './i18n.js';
 
-const TYPE_KEYS = {
-  all: 'all',
-  code: 'code',
-  exception: 'exception',
-  'compiler-error': 'compilerError',
-  'compiler-warning': 'compilerWarning',
-  logic: 'logic',
-  concept: 'concept'
-};
-
 function escapeHtml(value) {
   return String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -19,9 +9,10 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
-export function typeLabel(type, locale) {
-  const key = TYPE_KEYS[type];
-  return key ? uiText(locale, key) : String(type ?? '');
+export function typeLabel(type, locale, typeDefinitions = []) {
+  if (type === 'all') return uiText(locale, 'all');
+  const definition = typeDefinitions.find(item => item.id === type);
+  return definition?.labels?.[locale] ?? definition?.labels?.ja ?? String(type ?? '');
 }
 
 export function renderTranslationBadge(item, locale) {

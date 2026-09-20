@@ -1,6 +1,6 @@
 # Cloudflare Pages
 
-CSharpAtlas is a Vite static site and does not require ASP.NET Core or any server runtime.
+LanguageAtlas派生サイトはViteの静的サイトとしてそのままデプロイできます。
 
 ## Pages settings
 
@@ -8,9 +8,9 @@ CSharpAtlas is a Vite static site and does not require ASP.NET Core or any serve
 - Build command: `npm run build`
 - Build output directory: `dist`
 
-Cloudflare Pages installs the npm dependencies, runs Vite, and publishes `dist/`. Article JSON under `public/content` is copied into the built site automatically by Vite.
+Cloudflare Pagesはnpm dependenciesをインストールし、Vite build後の`dist/`を公開します。`public/`配下の設定・記事JSONもbuild outputへコピーされます。
 
-Git-connected Pages projects create preview deployments for pull requests and non-production branches.
+派生repoでは`public/language.config.json`のサイト名等に加え、必要ならCloudflare側のproject name、custom domain、OGP assetsを設定してください。
 
 ## Local development
 
@@ -19,13 +19,9 @@ npm install
 npm run dev
 ```
 
-The dev server listens on `0.0.0.0`, so it can also be exposed through Cloudflare Tunnel from WSL.
-
 ## Production-like preview
 
 ```bash
 npm run build
 npm run preview
 ```
-
-This serves the generated `dist/` output locally.

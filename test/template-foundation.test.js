@@ -14,7 +14,7 @@ const expectedCategories = [
   'logic-errors.json'
 ];
 
-test('template keeps the CSharpAtlas content categories', () => {
+test('template keeps the shared content categories', () => {
   assert.deepEqual(CONTENT_CATEGORIES, expectedCategories);
 });
 
@@ -29,10 +29,10 @@ test('template example corpus has one article in each category and matching ja/e
   }
 });
 
-test('migrated article search remains reusable', () => {
+test('article search remains reusable', () => {
   const rows = [
     { id: 'example', title: 'Example JSON', short: 'Parse data', tags: ['json'], topics: [] },
     { id: 'other', title: 'Other', short: 'Nothing', tags: [], topics: [] }
   ];
-  assert.deepEqual(rows.filter(item => matchesArticle(item, 'json')).map(x => x.id), ['example']);
+  assert.deepEqual(rows.filter(item => matchesArticle(item, 'json')).map(item => item.id), ['example']);
 });

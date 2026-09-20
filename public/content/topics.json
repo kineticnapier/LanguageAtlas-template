@@ -1,0 +1,16 @@
+[
+  {"id":"syntax","labels":{"ja":"基本文法","en":"Syntax"},"keywords":["syntax","構文","method","メソッド","variable","変数"]},
+  {"id":"oop","labels":{"ja":"型・OOP","en":"Types & OOP"},"keywords":["class","record","interface","object","generic","型"]},
+  {"id":"null","labels":{"ja":"null","en":"null"},"keywords":["null","nullable"]},
+  {"id":"numbers","labels":{"ja":"数値","en":"Numbers"},"keywords":["int","double","decimal","number","数値"]},
+  {"id":"strings","labels":{"ja":"文字列","en":"Strings"},"keywords":["string","文字列"]},
+  {"id":"collections","labels":{"ja":"コレクション","en":"Collections"},"keywords":["list","map","dictionary","set","array","collection"]},
+  {"id":"query","labels":{"ja":"クエリ・変換","en":"Query & transforms"},"keywords":["linq","stream","select","where","map","filter"]},
+  {"id":"exceptions","labels":{"ja":"例外・デバッグ","en":"Exceptions & debugging"},"keywords":["exception","例外","try","catch","throw","warning","error"]},
+  {"id":"io","labels":{"ja":"ファイル・I/O","en":"Files & I/O"},"keywords":["file","path","stream","io"]},
+  {"id":"serialization","labels":{"ja":"シリアライズ","en":"Serialization"},"keywords":["json","serialize","deserialize"]},
+  {"id":"network","labels":{"ja":"ネットワーク","en":"Networking"},"keywords":["http","url","network"]},
+  {"id":"concurrency","labels":{"ja":"非同期・並行処理","en":"Async & concurrency"},"keywords":["async","await","task","thread","parallel","concurrent"]},
+  {"id":"text","labels":{"ja":"正規表現・文字コード","en":"Regex & text encoding"},"keywords":["regex","encoding","utf"]},
+  {"id":"practical","labels":{"ja":"実践・その他","en":"Practical & other"},"keywords":[]}
+]

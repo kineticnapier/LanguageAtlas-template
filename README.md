@@ -1,41 +1,34 @@
 # LanguageAtlas Template
 
-CSharpAtlas の実装を雛形として切り出した、言語別 Atlas 用の静的サイトテンプレートです。
+Programming-language Atlas sites用の共通テンプレートです。CSharpAtlasのUI・検索・学習マップを土台にしつつ、言語固有値を設定とコンテンツへ分離しています。
 
-## 含まれるもの
+## 派生repoで主に変更する場所
 
-- Vite + Vanilla JavaScript
-- 記事一覧 / 詳細表示
-- 検索、type/topic フィルタ、並び替え
-- お気に入り / 最近見た記事
-- ja/en ローカライズ
-- Wiki 形式の記事リンク
-- 学習マップ
-- GitHub Actions CI
-- Cloudflare Pages 互換ビルド
-- 各カテゴリ1件ずつの C# example 記事
+- `public/language.config.json`: 言語名、サイト名、ロゴ、検索候補、Prism言語、localStorage prefix
+- `public/content/types.json`: 記事タイプと表示名
+- `public/content/topics.json`: トピックと自動分類キーワード
+- `public/content/articles/*.json`: ベース記事
+- `public/content/locales/{ja,en}/*.json`: 本文
+- `public/content/learning-map.json`: 推奨学習順
 
-example 記事はスキーマ確認用です。派生言語の repo では記事内容と、必要に応じて Prism の言語定義・UI 文言を置き換えてください。
+`src/` は原則として言語非依存の共通ランタイムです。新しい言語を追加するときは、まず設定とcontentだけの差し替えで済む形を維持してください。
 
-## 開発
+## Example corpus
+
+各カテゴリにCSharpAtlas由来のexample記事を1件ずつ残しています。スキーマ・表示・学習マップの確認用であり、派生repoでは対象言語の記事へ置き換えます。
+
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## テスト / ビルド
+## Verification
 
 ```bash
 npm test
 npm run build
 ```
 
-## コンテンツ
-
-- `public/content/articles/*.json`: 言語非依存のベース記事データ
-- `public/content/locales/ja/*.json`: 日本語本文
-- `public/content/locales/en/*.json`: 英語本文
-- `public/content/learning-map.json`: 推奨学習順
-
-元実装: `kineticnapier/CSharpAtlas`
+テストではexample corpusのja/en整合性に加え、言語固有のbrandingや識別子が共通ランタイムへ再侵入していないことも確認します。
