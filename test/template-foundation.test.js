@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { CONTENT_CATEGORIES } from '../src/content-loader.js';
-import { filterArticles } from '../src/article-search.js';
+import { matchesArticle } from '../src/article-search.js';
 import { readFile } from 'node:fs/promises';
 
 const expectedCategories = [
@@ -31,8 +31,8 @@ test('template example corpus has one article in each category and matching ja/e
 
 test('migrated article search remains reusable', () => {
   const rows = [
-    { id: 'example', title: 'Example JSON', short: 'Parse data', tags: ['json'] },
-    { id: 'other', title: 'Other', short: 'Nothing', tags: [] }
+    { id: 'example', title: 'Example JSON', short: 'Parse data', tags: ['json'], topics: [] },
+    { id: 'other', title: 'Other', short: 'Nothing', tags: [], topics: [] }
   ];
-  assert.deepEqual(filterArticles(rows, 'json').map(x => x.id), ['example']);
+  assert.deepEqual(rows.filter(item => matchesArticle(item, 'json')).map(x => x.id), ['example']);
 });
