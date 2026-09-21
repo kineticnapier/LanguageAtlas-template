@@ -44,6 +44,16 @@ test('wiki home is configuration-driven and supports random article selection', 
   assert.equal(shouldShowWikiHome({ query: 'json', types: new Set(), topics: new Set(), favoritesOnly: false, recentOnly: false }), false);
 });
 
+test('learning map representative code is kept in a separate snippet file', async () => {
+  const map = await json('../public/content/learning-map.json');
+  const snippets = await json('../public/content/learning-map-code.json');
+  const mainNodes = map.chapters.flatMap(chapter => chapter.nodes ?? []).filter(node => (node.kind ?? 'main') === 'main');
+  const mainIds = mainNodes.map(node => node.id).sort();
+  assert.deepEqual(Object.keys(snippets).sort(), mainIds);
+  assert.ok(mainNodes.every(node => !Object.hasOwn(node, 'code')), 'main node code belongs in learning-map-code.json');
+  assert.ok(Object.values(snippets).every(code => typeof code === 'string' && code.trim() && code.split(/\r?\n/).length <= 4));
+});
+
 test('language-agnostic shared runtime remains byte-identical to CSharpAtlas main c145639f', async () => {
   const expectedBlobShas = {
     '../src/article-localization.js': '6f3c5b887c5d9460770d37c976fa28c7de0a9d09',
