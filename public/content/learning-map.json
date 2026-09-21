@@ -5,9 +5,9 @@
       "title": { "ja": "Example: 基礎", "en": "Example: Basics" },
       "description": { "ja": "テンプレートの main/support ノード構造を確認する最小マップです。", "en": "A minimal map demonstrating main and support nodes in the template." },
       "nodes": [
-        { "id": "example-console-write-line", "kind": "main", "code": "Console.WriteLine(\"Hello\");" },
-        { "id": "example-value-reference-types", "kind": "main", "prerequisites": ["example-console-write-line"], "code": "int x = 10;" },
-        { "id": "example-json-deserialize", "kind": "main", "prerequisites": ["example-value-reference-types"], "code": "JsonSerializer.Deserialize<T>(json);" },
+        { "id": "example-console-write-line", "kind": "main" },
+        { "id": "example-value-reference-types", "kind": "main", "prerequisites": ["example-console-write-line"] },
+        { "id": "example-json-deserialize", "kind": "main", "prerequisites": ["example-value-reference-types"] },
         { "id": "example-cs0103", "kind": "support", "attachedTo": "example-console-write-line" },
         { "id": "example-null-reference", "kind": "support", "attachedTo": "example-value-reference-types" }
       ]
