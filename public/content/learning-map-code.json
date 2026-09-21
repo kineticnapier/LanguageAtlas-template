@@ -1,0 +1,5 @@
+{
+  "example-console-write-line": "Console.WriteLine(\"Hello\");",
+  "example-value-reference-types": "int x = 10;",
+  "example-json-deserialize": "JsonSerializer.Deserialize<T>(json);"
+}
