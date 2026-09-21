@@ -18,20 +18,27 @@ test('wiki home is configuration-driven and supports random article selection', 
   assert.ok(Array.isArray(config.portal?.beginner));
   assert.ok(Array.isArray(config.portal?.commonErrors));
 
-  const articles = [
-    article('example-code', 'code', ['basics']),
-    article('example-concept', 'concept', ['basics']),
-    article('example-exception', 'exception', ['errors']),
-    article('example-compiler-error', 'compiler-error', ['errors']),
-    article('example-warning', 'compiler-warning', ['errors']),
-    article('example-logic', 'logic', ['errors']),
-    article('newest-one', 'code'),
-    article('newest-two', 'concept')
-  ];
+  const typeById = new Map([
+    ['example-console-write-line', 'code'],
+    ['example-json-deserialize', 'code'],
+    ['example-value-reference-types', 'concept'],
+    ['example-null-reference', 'exception'],
+    ['example-reference-identity', 'logic'],
+    ['example-cs0103', 'compiler-error'],
+    ['example-nullable-warning', 'compiler-warning']
+  ]);
+  const configured = [...new Set([
+    ...config.portal.featured,
+    ...config.portal.beginner,
+    ...config.portal.commonErrors
+  ])];
+  const articles = configured.map(id => article(id, typeById.get(id) ?? 'concept'));
+  articles.push(article('newest-one', 'code'), article('newest-two', 'concept'));
+
   const sections = buildWikiHomeSections(articles, config.portal);
   assert.deepEqual(sections.featured.map(item => item.id), config.portal.featured);
   assert.deepEqual(sections.beginner.map(item => item.id), config.portal.beginner);
-  assert.ok(sections.commonErrors.every(item => ['exception', 'compiler-error', 'compiler-warning', 'logic'].includes(item.type)));
+  assert.deepEqual(sections.commonErrors.map(item => item.id), config.portal.commonErrors);
   assert.equal(pickRandomArticle(articles, () => 0.999).id, 'newest-two');
   assert.equal(shouldShowWikiHome({ query: '', types: new Set(), topics: new Set(), favoritesOnly: false, recentOnly: false }), true);
   assert.equal(shouldShowWikiHome({ query: 'json', types: new Set(), topics: new Set(), favoritesOnly: false, recentOnly: false }), false);
