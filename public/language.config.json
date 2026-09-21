@@ -30,5 +30,25 @@
       "en": "e.g. JSON / null / compiler error"
     },
     "quickQueries": ["JSON", "null", "example"]
+  },
+  "portal": {
+    "featured": [
+      "example-console-write-line",
+      "example-json-deserialize",
+      "example-value-reference-types",
+      "example-null-reference"
+    ],
+    "beginner": [
+      "example-console-write-line",
+      "example-value-reference-types",
+      "example-reference-identity",
+      "example-json-deserialize"
+    ],
+    "commonErrors": [
+      "example-null-reference",
+      "example-cs0103",
+      "example-nullable-warning",
+      "example-reference-identity"
+    ]
   }
 }
