@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/src/code-enhancements.css">
   <link rel="stylesheet" href="/src/list-discovery.css">
   <link rel="stylesheet" href="/src/quest-view.css">
+  <link rel="stylesheet" href="/src/wiki-home.css">
 </head>
 <body>
 <header>
@@ -38,7 +39,55 @@
       <div id="quickQueries" class="quick"></div>
     </div>
 
-    <div class="layout">
+    <section id="wikiHomePanel" class="wiki-home hidden" aria-labelledby="wikiHomeHeading">
+      <div class="wiki-home-intro">
+        <div>
+          <div id="wikiHomeEyebrow" class="wiki-kicker">Language Atlas ポータル</div>
+          <h2 id="wikiHomeHeading">探す・学ぶ</h2>
+        </div>
+        <span id="wikiArticleCount" class="wiki-article-count"></span>
+      </div>
+
+      <div class="wiki-grid wiki-grid-primary">
+        <section class="wiki-box wiki-box-featured">
+          <div class="wiki-box-head"><div><h3 id="wikiFeaturedTitle">注目の記事</h3><p id="wikiFeaturedDescription"></p></div></div>
+          <div id="wikiFeaturedArticles" class="wiki-article-grid"></div>
+        </section>
+        <section class="wiki-box">
+          <div class="wiki-box-head"><div><h3 id="wikiNewestTitle">新着記事</h3><p id="wikiNewestDescription"></p></div></div>
+          <div id="wikiNewestArticles" class="wiki-link-list"></div>
+        </section>
+      </div>
+
+      <div class="wiki-grid">
+        <section class="wiki-box">
+          <div class="wiki-box-head"><div><h3 id="wikiBeginnerTitle">はじめての一歩</h3><p id="wikiBeginnerDescription"></p></div></div>
+          <div id="wikiBeginnerArticles" class="wiki-link-list"></div>
+        </section>
+        <section class="wiki-box">
+          <div class="wiki-box-head"><div><h3 id="wikiCommonErrorsTitle">よくあるエラー</h3><p id="wikiCommonErrorsDescription"></p></div></div>
+          <div id="wikiCommonErrorArticles" class="wiki-link-list"></div>
+        </section>
+      </div>
+
+      <div class="wiki-grid wiki-grid-footer">
+        <section class="wiki-box">
+          <div class="wiki-box-head"><div><h3 id="wikiCategoriesTitle">カテゴリから探す</h3><p id="wikiCategoriesDescription"></p></div></div>
+          <div id="wikiCategoryButtons" class="wiki-category-grid"></div>
+        </section>
+        <section class="wiki-box wiki-learning-box">
+          <div class="wiki-learning-copy"><span class="wiki-map-mark" aria-hidden="true">→</span><div><h3 id="wikiLearningMapTitle">学習マップ</h3><p id="wikiLearningMapDescription"></p></div></div>
+          <button id="wikiLearningMapButton" type="button" class="wiki-primary-action">学習マップを開く</button>
+        </section>
+      </div>
+
+      <div class="wiki-home-actions">
+        <button id="wikiRandomButton" type="button">おまかせ表示</button>
+        <button id="wikiBrowseAllButton" type="button">すべての記事を見る</button>
+      </div>
+    </section>
+
+    <div id="browseView" class="layout">
       <aside>
         <div id="asideTitle" class="aside-title">種類</div>
         <div id="typeFilters"></div>
@@ -51,57 +100,24 @@
         </div>
 
         <div id="listViewPanel">
-          <div class="list-head">
-            <h2 id="listTitle">おすすめ</h2>
-            <span id="resultCount"></span>
-          </div>
+          <div class="list-head"><h2 id="listTitle">おすすめ</h2><span id="resultCount"></span></div>
           <div class="list-tools">
-            <div class="topic-filter-group">
-              <span id="topicFilterLabel" class="list-tool-label">トピック</span>
-              <div id="topicFilters" class="topic-filters"></div>
-            </div>
+            <div class="topic-filter-group"><span id="topicFilterLabel" class="list-tool-label">トピック</span><div id="topicFilters" class="topic-filters"></div></div>
             <div class="list-tool-actions">
-              <label class="sort-picker" for="sortSelect">
-                <span id="sortLabel">並び順</span>
-                <select id="sortSelect">
-                  <option value="recommended">おすすめ順</option>
-                  <option value="title">名前順</option>
-                  <option value="recent">最近見た順</option>
-                  <option value="favorites">お気に入り優先</option>
-                </select>
-              </label>
+              <label class="sort-picker" for="sortSelect"><span id="sortLabel">並び順</span><select id="sortSelect"><option value="recommended">おすすめ順</option><option value="title">名前順</option><option value="recent">最近見た順</option><option value="favorites">お気に入り優先</option></select></label>
               <button id="favoritesOnlyButton" type="button" aria-pressed="false">☆ お気に入り</button>
               <button id="recentOnlyButton" type="button" aria-pressed="false">最近見た</button>
             </div>
           </div>
-          <div id="selectedFilters" class="selected-filters" hidden>
-            <span id="selectedFiltersLabel" class="list-tool-label">選択中</span>
-            <div id="selectedFilterChips" class="selected-filter-chips"></div>
-            <button id="clearFiltersButton" type="button">すべて解除</button>
-          </div>
+          <div id="selectedFilters" class="selected-filters" hidden><span id="selectedFiltersLabel" class="list-tool-label">選択中</span><div id="selectedFilterChips" class="selected-filter-chips"></div><button id="clearFiltersButton" type="button">すべて解除</button></div>
           <div id="cards" class="cards"></div>
           <div id="empty" class="empty">一致する項目がありません。</div>
         </div>
 
         <div id="questViewPanel" class="quest-view-panel hidden">
-          <div class="quest-toolbar">
-            <div class="quest-toolbar-copy">
-              <h2 id="questChapterTitle"></h2>
-              <p id="questChapterDescription"></p>
-            </div>
-            <div class="quest-toolbar-side">
-              <button id="questFitButton" type="button">全体を表示</button>
-              <span id="questStats" class="quest-stats"></span>
-            </div>
-          </div>
+          <div class="quest-toolbar"><div class="quest-toolbar-copy"><h2 id="questChapterTitle"></h2><p id="questChapterDescription"></p></div><div class="quest-toolbar-side"><button id="questFitButton" type="button">全体を表示</button><span id="questStats" class="quest-stats"></span></div></div>
           <div class="quest-layout">
-            <div id="questViewport" class="quest-viewport">
-              <div id="questWorld" class="quest-world">
-                <svg id="questEdges" class="quest-edges" aria-hidden="true"></svg>
-                <div id="questNodes" class="quest-nodes"></div>
-              </div>
-              <div id="questHelp" class="quest-help">ドラッグ: 移動 / ホイール: ズーム / クリック: 概要 / ダブルクリック: 記事を開く</div>
-            </div>
+            <div id="questViewport" class="quest-viewport"><div id="questWorld" class="quest-world"><svg id="questEdges" class="quest-edges" aria-hidden="true"></svg><div id="questNodes" class="quest-nodes"></div></div><div id="questHelp" class="quest-help">ドラッグ: 移動 / ホイール: ズーム / クリック: 概要 / ダブルクリック: 記事を開く</div></div>
             <aside id="questDetail" class="quest-detail"></aside>
           </div>
         </div>
@@ -109,13 +125,11 @@
     </div>
   </section>
 
-  <section id="detailView" class="detail hidden">
-    <button id="backButton" class="back">← 一覧に戻る</button>
-    <div id="detailContent"></div>
-  </section>
+  <section id="detailView" class="detail hidden"><button id="backButton" class="back">← 一覧に戻る</button><div id="detailContent"></div></section>
 </main>
 
 <script type="module" src="/src/main.js"></script>
 <script type="module" src="/src/quest-bootstrap.js"></script>
+<script type="module" src="/src/wiki-home-bootstrap.js"></script>
 </body>
 </html>
